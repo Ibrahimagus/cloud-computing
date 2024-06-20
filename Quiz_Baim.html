@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SCC | jQuery Quiz</title>
+
+    <!-- importing JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(24, 14, 14);
+            color: white;
+            border-radius: 5px;
+            height: 12vh;
+            box-shadow: 2px 2px 4px black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.openart.ai/stable_diffusion/ba30e7c255386915c57287ac46765ee5e548c9b0_2000x2000.webp');
+            background-size: cover;
+            align-items: center;
+            height: 78vh;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        div.question-box {
+            text-align: justify;
+            font-family: sans-serif;
+            max-width: 200px;
+            color: black;
+            text-shadow: 4px 4px 8px white;
+            margin: 20px;
+            background-color: aquamarine;
+            padding: 5px;
+            border: 2px solid green;
+            border-radius: 10px;
+        }
+
+        div.question-box h2 {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        div.question-box h5 {
+            font-size: 12px;
+        }
+
+        div.question-box > input {
+            font-size: 12px;
+            color: black;
+            width: 90%;
+            height: 15px;
+            padding: 2px;
+            margin: 3px;
+        }
+
+        div.question-box > button {
+
+            width: 90px;
+            height: 30px;
+            background-color: yellow;
+            margin: 3px;
+            font-weight: 700;
+            border-radius: 7px;
+        }
+
+        div.question-box > button:hover {
+            cursor: pointer;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            background-color: rgb(24, 14, 14);
+            border-radius: 5px;
+            color: white;
+            box-shadow: 2px 2px 4px black;
+        }
+    </style>
+
+    <script>
+        function q1() {
+            // 1. Menerima nilai input-q1
+            let value = $('#input-q1').val();
+            // 2. Jika nilai inputnya kosong
+            if (value === '') {
+                // 3. Keluarkan pesan peringatan
+                alert('Isikan Sesuatu Disini!')
+            } else {
+                // 4. Tampilkan nilai input
+                alert(value);
+            }
+
+        }
+
+        function q2() {
+            // 1. Menerima nilai input-q2
+            let email = $('#input-q2').val();
+            // 2. Jika ada '@' di nilai input (Hint! Coba gunakan 'includes')
+            if (email.includes('@')) {
+
+                // 3. rtanny@gmail.com -> extract 'gmail'
+                let pisah = email.split('@')[1];
+                let pisah_com = pisah.split('.')[0];
+
+                // 4. Tampilkan nilai domain
+                alert(pisah_com);
+
+            }
+            // 5. Keluarkan peringatan jika nilai inputnya bukanlah email
+            else {
+                alert('invalid Alamat Email')
+            }
+
+
+
+        }
+
+        function q3() {
+            // 1. Menerima nilai input-q3
+            let namaBaru = $('#input-q3').val();
+            // 2. Keluarkan pesan peringatan jika nilai inputnya kosong
+            if (namaBaru === '') {
+                alert('Masukkan Suatu Nama');
+                return;
+            }
+
+            // 3. Dengan nilai input yang dimasukkan, buatlah list dari "names" -q3 (Gunakan backticks!)
+            let html_baru = `<li>${namaBaru}</li>`;
+
+            // 4. masukkan temp_html ke "names:-q3
+            $('#names-q3').append(html_baru);
+        }
+
+        function q3_delete() {
+            // 1. Hapus semua lists di names-q3
+            $('#names-q3').empty();
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <nav>
+        <h1 style="text-align: center;">Let's practice more jQuery!</h1>
+    </nav>
+    
+
+    <div class="container">
+        <div class="question-box">
+            <h2>Q1. Information Input Box</h2>
+            <h5>1-1. Alert the input value as you press the button</h5>
+            <h5>1-2. Alert "Insert any value!" when the input value is empty</h5>
+            <input id="input-q1" type="text" placeholder="isikan sesuatu" /> <button style="background-color: rgb(65, 192, 65);" onclick="q1()">Submit</button>
+        </div>
+        <div class="question-box">
+            <h2>Q2. Email Checker</h2>
+            <h5>2-1. Alert the input value(email) as you press the button</h5>
+            <h5>2-2. Alert "Invalid email address" if the input value doesn't have '@'</h5>
+            <h5>2-3. Alert the domain name of the email ex. gmail, hotmail, etc. </h5>
+            <input id="input-q2" type="text" placeholder="email" /> <button onclick="q2()">Check</button>
+        </div>
+        <div class="question-box">
+            <h2>Q3. Name List </h2>
+            <h5>3-1. Insert names to appear in list</h5>
+            <h5>3-2. Creating a button to delete all</h5>
+            <input id="input-q3" type="text" placeholder="Name here" />
+            <button style="background-color: rgb(16, 213, 16);" onclick="q3()">Insert</button>
+            <button style="background-color: rgb(233, 50, 50);" onclick="q3_delete()">Delete all</button>
+            <ul id="names-q3">
+                <li>ibrahim </li>
+                <li>Lupusrigna</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h5>
+            copyright &copy; - ibrahim agus
+        </h5>
+    </div>
+
+</body>
+
+</html>
